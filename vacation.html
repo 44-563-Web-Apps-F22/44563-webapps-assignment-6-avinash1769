@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<title>Choose Vacation</title>
+
+<body>
+
+    <h2>Avinash Yandapalli selects a vacation</h2>
+
+    <form>
+        <input type="checkbox" id="cb1_air" name="air" value="air" checked>
+        <label for="cb1_air">Travel by Air</label></br>
+
+        <input type="checkbox" id="cb1_Domestic" name="domestic" value="domestic" checked>
+        <label for="cb1_Domestic">Domestic</label></br>
+
+        <input type="checkbox" id="cb1_Resort" name="resort" value="resort">
+        <label for="cb1_Resort">Resort</label></br>
+
+        <input type="button" onclick="selectVacation()" value="Select a vacation">
+    </form>
+    <p id="result_vacation"></p><br>
+
+    <form>
+        <label for="form1_city">Enter a city </label>
+        <input type="text" id="form1_city" name="form1_city" value="city"> <br>
+
+        <label for="form1_price">Enter price </label>
+        <input type="text" id="form1_price" name="form1_price"> <br>
+
+        <input type="button" onclick="updateVacation()" value="Update the vacation">
+    </form>
+
+
+    <p id="result_property"></p>
+
+    <script>
+        my_vacation = {}
+        function selectVacation() {
+            air = document.getElementById("cb1_air").checked
+            domestic = document.getElementById("cb1_Domestic").checked
+            resort = document.getElementById("cb1_Resort").checked
+            if (air) {
+                my_vacation["air"] = true;
+            }
+            else {
+                my_vacation["air"] = false;
+            }
+            if (domestic) {
+                my_vacation["domestic"] = true;
+            }
+            else {
+                my_vacation["domestic"] = false;
+            }
+            if (resort) {
+                my_vacation["resort"] = true;
+            }
+            else {
+                my_vacation["resort"] = false;
+            }
+            document.getElementById("result_vacation").innerHTML = "Travel by Air : " + my_vacation.air
+                + " Domestic : " + my_vacation.domestic + " Resort : " + my_vacation.resort;
+        }
+        function updateVacation() {
+            city = document.getElementById("form1_city").value
+            price = document.getElementById("form1_price").value
+            my_vacation["city"] = city;
+            my_vacation["price"] = price;
+            document.getElementById("result_property").innerHTML = "City : " + my_vacation.city + " Price : " + my_vacation.price
+        }
+    </script>
+
+</body>
+
+</html>
