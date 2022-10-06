@@ -1,45 +1,71 @@
 <!DOCTYPE html>
-<html>
- <title>Webapps lab 6</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess Musician</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+    crossorigin="anonymous"></script>
+</head>
 <body>
-
-<h1>Musician guess by Avinash</h1>
-<h2>Getting input</h2>
+    <h1>Musician guess by Avinash Yandapalli</h1>
+    <h2>Getting input</h2>
 
 <form>
     <label for="form1_age">Enter the secret musician name</label>
     <input type ="password" id="form1_age" name="form1_age" min=10 max=50 step=2 value="John Lennon"> <br>
 
-    <label for="form1_nick">Guess the musician</label>
+    <label for="form1_nick">Guess the musician </label>
     <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
 
     <input type="button" onclick="checkGuess()" value="Check the guess">
 </form>
 
 
-<p id="result">This text will be replaced </p>
+<p id="result">the text will be displayed</p>
+<div class ="container">
+    <img id="insectImage" src="Ant.jpg" alt="LACEWING" width="100px" height="100px" onclick="swapImage()" />
+</div>
 
 <script> 
-correct = 0
+correct=0
 wrong = 0
-function checkGuess (){
+useImage=1
+function checkGuess(){
     console.log("Getting form values")
     age = document.getElementById("form1_age").value
     nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
     
     out = document.getElementById("result")
     if(age==nick){
+        correct=correct + 1
+        out.innerHTML = "correct - "+correct+","+"wrong - "+wrong
         alert("You got it right")
-        correct = correct+1
-        out.innerHTML = "correct answer:"+ correct +"wrong answer:"+wrong
     } else {
-        alert("Wrong musician")
-        wrong = wrong+1
-        out.innerHTML = "correct answer:"+ correct +"wrong answer:"+wrong
+        wrong = wrong + 1
+        out.innerHTML = "correct - "+correct+","+"wrong - "+wrong
+        alert("Wrong Musician")
+    }
+
+}
+function swapImage(){
+    switch(useImage)
+    {
+        case 1:document.getElementById("insectImage").src="Ant.jpg";useImage = 2; break;
+        case 2:document.getElementById("insectImage").src="Nit.jpg";useImage = 3; break;
+        case 3:document.getElementById("insectImage").src="Yellow jacket.jpg";useImage = 1; break;
+        default:document.getElementById("insectImage").src="Ant.jpg";useImage = 2;
+
     }
 }
 </script>
-
+    
 </body>
-</html> 
+</html>
